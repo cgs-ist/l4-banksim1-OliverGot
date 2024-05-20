@@ -9,14 +9,26 @@ class bankAccount:
             print(f"Your current account ballance is: {self.__ballance}")
         else:
             print("Wrong password.")
+    
+    def deposit(self):
+        amount = int(input("How much do you want to deposit: "))
+        if input("Enter your password: ") == self.__password:
+            self.__ballance += amount
+            print(f"Your current account ballance is: {self.__ballance}")
+        else:
+            print("Wrong password.")
 
-newAccount = bankAccount("Oliver", 1000, "thisismypassword")
+currentAccount = bankAccount(input("Enter your name: "), 1000, input("Enter your password: "))
+
 
 while True:
     print('Press b to get the balance')
+    print("Press d to deposit")
     print('Press q to quit')
-
-    if input() == 'b':
-        newAccount.getBallance()
-    elif input == 'q':
+    userInput = input().lower()
+    if userInput == 'b':
+        currentAccount.getBallance()
+    if userInput == 'd':
+        currentAccount.deposit()
+    elif userInput == 'q':
         break
